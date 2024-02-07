@@ -1,14 +1,15 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
-import { UsersModule } from './users/users.module';
-import { BooksModule } from './books/books.module';
-import { AuthorsModule } from './authors/authors.module';
+import { UserModule } from './user/user.module';
+import { AuthorModule } from './author/author.module';
+import { BookModule } from './book/book.module';
+import { DatabaseModule } from './database/database.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [UserModule, AuthModule, UsersModule, BooksModule, AuthorsModule],
+  imports: [AuthModule, UserModule, AuthorModule, BookModule, DatabaseModule, ConfigModule.forRoot()],
   controllers: [AppController],
   providers: [AppService],
 })

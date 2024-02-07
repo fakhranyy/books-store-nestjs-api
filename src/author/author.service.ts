@@ -3,13 +3,13 @@ import { CreateAuthorDto } from './dto/create-author.dto';
 import { UpdateAuthorDto } from './dto/update-author.dto';
 
 @Injectable()
-export class AuthorsService {
+export class AuthorService {
   create(createAuthorDto: CreateAuthorDto) {
     return 'This action adds a new author';
   }
 
   findAll() {
-    return `This action returns all authors`;
+    return `This action returns all author`;
   }
 
   findOne(id: number) {

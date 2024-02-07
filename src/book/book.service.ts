@@ -3,13 +3,13 @@ import { CreateBookDto } from './dto/create-book.dto';
 import { UpdateBookDto } from './dto/update-book.dto';
 
 @Injectable()
-export class BooksService {
+export class BookService {
   create(createBookDto: CreateBookDto) {
     return 'This action adds a new book';
   }
 
   findAll() {
-    return `This action returns all books`;
+    return `This action returns all book`;
   }
 
   findOne(id: number) {
