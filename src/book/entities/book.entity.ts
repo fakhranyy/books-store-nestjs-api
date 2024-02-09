@@ -1,4 +1,5 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Min } from 'class-validator';
 
 @Entity({ name: 'books' })
 export class Book {
@@ -9,13 +10,10 @@ export class Book {
   title: string;
 
   @Column()
-  author: string;
-
-  @Column()
   description: string;
 
   @Column()
-  price: string;
+  price: number;
 
   @Column({
     type: 'enum',

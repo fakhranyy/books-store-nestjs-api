@@ -25,8 +25,8 @@ export class AuthorService {
 
   async update(id: number, updateAuthorDto: UpdateAuthorDto): Promise<Author> {
     const authorToUpdate = await this.authorRepo.findOneBy({ id });
-    const updatedAuthor = Object.assign(authorToUpdate, updateAuthorDto);
-    return await this.authorRepo.save(updatedAuthor);
+    Object.assign(authorToUpdate, updateAuthorDto);
+    return await this.authorRepo.save(authorToUpdate);
   }
 
   async remove(id: number) {
