@@ -4,11 +4,14 @@ import { UpdateAuthorDto } from './dto/update-author.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Author } from './entities/author.entity';
 import { Repository } from 'typeorm';
+import { Book } from 'src/book/entities/book.entity';
 
 @Injectable()
 export class AuthorService {
   constructor(
     @InjectRepository(Author) private readonly authorRepo: Repository<Author>,
+    @InjectRepository(Book) private readonly bookRepo: Repository<Author>,
+
   ) {}
 
   async create(createAuthorDto: CreateAuthorDto): Promise<Author> {
@@ -17,6 +20,11 @@ export class AuthorService {
 
   async findAll(): Promise<Author[]> {
     return await this.authorRepo.find();
+  }
+
+  async findAllAuthorBooks(id: number): Promise<Author[]> {
+    const author = await this.authorRepo.findOneBy({id})
+    return await this.bookRepo.find({where: {books: author.books}})
   }
 
   async findOne(id: number): Promise<Author> {

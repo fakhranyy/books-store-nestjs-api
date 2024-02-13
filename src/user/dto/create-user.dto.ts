@@ -1,11 +1,13 @@
-import { IsBoolean, IsEmail, IsNotEmpty, IsString } from 'class-validator';
+import { IsBoolean, IsEmail, IsNotEmpty, IsString, MinLength } from 'class-validator';
+import { Unique } from 'typeorm';
 
 export class CreateUserDto {
   // dto stands for data transfer object
   //  this is just a plain TypeScript class with no nestjs
 
-  @IsNotEmpty()
   @IsString()
+  @IsNotEmpty()
+  @MinLength(3)
   readonly username: string;
 
   @IsNotEmpty()

@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { AuthorService } from './author.service';
 import { CreateAuthorDto } from './dto/create-author.dto';
 import { UpdateAuthorDto } from './dto/update-author.dto';
@@ -15,6 +23,11 @@ export class AuthorController {
   @Get()
   findAll() {
     return this.authorService.findAll();
+  }
+
+  @Get('/books/:id')
+  findAllAuthorBooks(@Param('id') id: string) {
+    return this.authorService.findAllAuthorBooks(+id);
   }
 
   @Get(':id')

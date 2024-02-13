@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Book } from 'src/book/entities/book.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity({ name: 'authors' })
 export class Author {
@@ -16,4 +17,7 @@ export class Author {
 
   @Column({ default: 'default-avatar.png' })
   image: string;
+
+  @OneToMany(() => Book, (book) => book.author)
+  books: Book[]
 }

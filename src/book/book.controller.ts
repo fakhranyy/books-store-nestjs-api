@@ -7,9 +7,9 @@ import { UpdateBookDto } from './dto/update-book.dto';
 export class BookController {
   constructor(private readonly bookService: BookService) {}
 
-  @Post()
-  create(@Body() createBookDto: CreateBookDto) {
-    return this.bookService.create(createBookDto);
+  @Post(':id')
+  create(@Param('id') id:string, @Body() createBookDto: CreateBookDto) {
+    return this.bookService.create(+id , createBookDto);
   }
 
   @Get()
@@ -22,6 +22,11 @@ export class BookController {
     return this.bookService.findOne(+id);
   }
 
+  @Get('/author/:id')
+  findBooksByAuthor(@Param('id') id: string) {
+    return this.bookService.findBooksByAuthor(+id);
+  }
+  
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateBookDto: UpdateBookDto) {
     return this.bookService.update(+id, updateBookDto);
