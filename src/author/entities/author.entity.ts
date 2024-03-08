@@ -18,6 +18,6 @@ export class Author {
   @Column({ default: 'default-avatar.png' })
   image: string;
 
-  @OneToMany(() => Book, (book) => book.author)
+  @OneToMany(() => Book, (book) => book.creator)
   books: Book[]
 }

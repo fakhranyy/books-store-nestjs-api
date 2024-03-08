@@ -10,7 +10,7 @@ import { Book } from 'src/book/entities/book.entity';
 export class AuthorService {
   constructor(
     @InjectRepository(Author) private readonly authorRepo: Repository<Author>,
-    @InjectRepository(Book) private readonly bookRepo: Repository<Author>,
+    @InjectRepository(Book) private readonly bookRepo: Repository<Book>,
 
   ) {}
 
@@ -22,9 +22,9 @@ export class AuthorService {
     return await this.authorRepo.find();
   }
 
-  async findAllAuthorBooks(id: number): Promise<Author[]> {
+  async findAllAuthorBooks(id: number): Promise<Book[]> {
     const author = await this.authorRepo.findOneBy({id})
-    return await this.bookRepo.find({where: {books: author.books}})
+    return await this.bookRepo.find({where: {creator: author}})
   }
 
   async findOne(id: number): Promise<Author> {

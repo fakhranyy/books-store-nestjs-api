@@ -4,7 +4,6 @@ import { UserModule } from './user/user.module';
 import { AuthorModule } from './author/author.module';
 import { BookModule } from './book/book.module';
 import { DatabaseModule } from './database/database.module';
-import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
@@ -13,7 +12,6 @@ import { ConfigModule } from '@nestjs/config';
     AuthorModule,
     BookModule,
     DatabaseModule,
-    ConfigModule.forRoot(),
   ],
   controllers: [],
   providers: [],

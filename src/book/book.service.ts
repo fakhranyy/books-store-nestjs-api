@@ -17,9 +17,8 @@ export class BookService {
   async create(id: number, createBookDto: CreateBookDto): Promise<Book> {
     const newBook = new Book();
     const author = await this.authorSrv.findOne(+id);
-    newBook.author = author;
+    newBook.creator = author;
     Object.assign(newBook, createBookDto);
-    console.log(newBook.author);
     return await this.bookRepo.save(newBook);
   }
 
@@ -27,7 +26,7 @@ export class BookService {
     return await this.bookRepo.find();
   }
   
- async findBooksByAuthor(id: number):Promise<Author[]>{
+ async findBooksByAuthor(id: number):Promise<Book[]>{
   return await this.authorSrv.findAllAuthorBooks(id)
   }
 

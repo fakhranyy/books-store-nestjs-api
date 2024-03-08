@@ -22,5 +22,5 @@ export class Book {
   cover: string;
 
   @ManyToOne(() => Author, (author) => author.books, {eager: true})
-  author: Author;
+  creator: Author;
 }
